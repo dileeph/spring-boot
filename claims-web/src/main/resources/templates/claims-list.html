@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Claims Adjuster</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</link>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+</link>
+<link rel="stylesheet" href="../static/css/dashboard.css" th:href="@{/css/dashboard.css}">
+</link>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Latestss compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+<body>
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Cognizant Claims Adjuster</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search..."/>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+
+ <div class="container-fluid">
+      <div class="row">
+ 
+        <div class="col-sm-9  col-md-10 col-md-offset-1 main">
+          <h1 class="page-header">Dashboard</h1>
+      <ul class="nav nav-pills" role="tablist">
+        <li role="presentation" class="active"><a href="#">Claims Processed <span class="badge">12</span></a></li>
+        <li role="presentation" class="active"><a href="#">Claims in Queue <span class="badge">2</span></a></li>
+       
+             </ul>
+
+    
+      
+
+          <h2 class="sub-header">Inbox</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Claim Number</th>
+                  <th>Policy Number</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+               <tbody>
+<tr th:each="claim : ${claims}">
+ <td th:text="${claim.id}">23</td>
+    <td th:text="${claim.number}">23</td>
+    <td><a href="#" th:text="${claim.policy}">10009008</a></td>
+    <td th:text="${#dates.format(claim.date, 'MM/dd/yyyy')}">12/26/2012</td>
+    </tr>
+</tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>
