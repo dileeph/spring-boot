@@ -1,4 +1,4 @@
-package com.cts.ts.mvc;
+package com.dh.ts.mvc;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cts.ts.domain.Claim;
-import com.cts.ts.repo.ClaimRepository;
+import com.dh.ts.domain.Claim;
+import com.dh.ts.repo.ClaimRepository;
 
 @RestController
 @RequestMapping(value = "/claims")

@@ -1,7 +1,8 @@
 package com.dh.ts;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
+import static com.google.common.collect.Lists.newArrayList;
+import static springfox.documentation.schema.AlternateTypeRules.newRule;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +29,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger.web.SecurityConfiguration;
 import springfox.documentation.swagger.web.UiConfiguration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import static com.google.common.collect.Lists.*;
-import static springfox.documentation.schema.AlternateTypeRules.*;
-import static springfox.documentation.builders.PathSelectors.*;
 @SpringBootApplication
 @EnableSwagger2
 public class TestServiceApplication {
@@ -45,11 +42,9 @@ public class TestServiceApplication {
       return new Docket(DocumentationType.SWAGGER_2)
           .select()
             .apis(RequestHandlerSelectors.any())
-            .paths(regex("/hotels/.*"))
+            .paths(PathSelectors.any())
             .build()
           .pathMapping("/")
-          .directModelSubstitute(LocalDate.class,
-              String.class)
           .genericModelSubstitutes(ResponseEntity.class)
           .alternateTypeRules(
               newRule(typeResolver.resolve(DeferredResult.class,
